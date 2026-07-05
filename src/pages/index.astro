@@ -2,11 +2,82 @@
 import Layout from "../layouts/Layout.astro";
 import SalaryCalculator from "../components/SalaryCalculator";
 import "../styles/global.css";
+
+const siteUrl = "https://takehomepay.nz";
+const pageDescription = "Free New Zealand salary calculator for 2025-2026. Calculate your take home pay after PAYE income tax, ACC levy, KiwiSaver contributions, and student loan repayments.";
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "NZ Salary Calculator - TakeHomePay.nz",
+  "description": pageDescription,
+  "url": siteUrl,
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "inLanguage": "en-NZ",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "NZD"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "Take Home Pay New Zealand",
+    "url": siteUrl
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many PAYE tax brackets are there in New Zealand?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There are five PAYE income tax brackets for the 2025-2026 tax year: 10.5% on income up to $15,600; 17.5% on income from $15,601 to $53,500; 30% on income from $53,501 to $78,100; 33% on income from $78,101 to $180,000; and 39% on income above $180,000. These brackets are progressive, meaning each rate only applies to the income within that particular range."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the ACC Earner's Levy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The ACC Earner's Levy is a contribution all NZ employees pay to fund the Accident Compensation Corporation scheme for no-fault personal injury cover. For 2025-2026, the levy is 1.60% of your earnings, capped at approximately $142,283 per year. The maximum annual levy is around $2,276.53."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What KiwiSaver contribution rates are available?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "KiwiSaver offers employee contribution rates of 3%, 4%, 6%, 8%, or 10% of gross pay. The default rate is 3%. Your employer is required to contribute a minimum of 3% on top of your contribution. Higher contributions reduce your take home pay but build more retirement savings through compound growth."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How are student loan repayments calculated in NZ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Student loan repayments are calculated at 12% on every dollar earned above the annual repayment threshold of $22,828 (approximately $439 per week). Repayments are deducted automatically by your employer through the PAYE system. Student loans are interest-free for borrowers who remain in New Zealand."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Independent Earner Tax Credit (IETC)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The IETC is a tax credit of up to $520 per year for NZ tax residents earning between $24,000 and $48,000 annually who do not receive income-tested benefits. The full credit applies between $24,000 and $44,000, then reduces by 13 cents for each dollar over $44,000 until it reaches zero at $48,000."
+      }
+    }
+  ]
+};
 ---
 
 <Layout
   title="NZ Salary Calculator 2026 - Take Home Pay, PAYE Tax, KiwiSaver | TakeHomePay.nz"
-  description="Free New Zealand salary calculator for 2025-2026. Calculate your take home pay after PAYE income tax, ACC levy, KiwiSaver contributions, and student loan repayments."
+  description={pageDescription}
   canonical="/"
 >
   <!-- Hero Section -->
@@ -174,4 +245,7 @@ import "../styles/global.css";
       </article>
     </div>
   </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 </Layout>

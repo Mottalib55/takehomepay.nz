@@ -26,7 +26,11 @@ const canonicalUrl = canonical ? `${siteUrl}${canonical}` : siteUrl;
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:locale" content="en_NZ" />
     <meta property="og:site_name" content="TakeHomePay.nz" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <meta name="author" content="Mottalib Radif" />
+    <link rel="manifest" href="/manifest.webmanifest" />
     <title>{title}</title>
 
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -55,7 +59,7 @@ const canonicalUrl = canonical ? `${siteUrl}${canonical}` : siteUrl;
     <!-- Plausible Analytics -->
     <script defer data-domain="takehomepay.nz" src="https://plausible.io/js/script.js"></script>
 
-    <!-- Google Analytics 4 — replace G-XXXXXXXXXX with real ID -->
+    <!-- TODO: Replace G-XXXXXXXXXX with your real GA4 Measurement ID from https://analytics.google.com -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
